@@ -11,7 +11,7 @@ This project is part of a **50-day structured build**, where I am documenting le
 
 Follow my day-by-day development notes, reflections, errors, and learning breakthroughs:
 
-👉 **https://www.notion.so/2a669206f07f80d789e4f71600651083?v=2a669206f07f8053bf48000ca7c88906&source=copy_link**
+👉 **https://www.notion.so/BlueTeam-Sentinel-2a669206f07f80fabb07cbecda9f2294?source=copy_link**
 
 This serves as:
 - A public learning record  
