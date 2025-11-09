@@ -1,4 +1,4 @@
-# 🟣 BlueTeam Sentinel
+# 💎 BlueTeam Sentinel
 ### DFIR Log & PCAP Triage Toolkit (Python)
 
 BlueTeam Sentinel is an incident response and threat intelligence toolkit designed to help analysts quickly triage logs, extract indicators of compromise, analyze network captures, and produce structured forensic reports.
