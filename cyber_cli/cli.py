@@ -4,6 +4,9 @@ import typer
 from rich.console import Console
 
 # console from the rich library allows for printing text in colours and different styles - make it pretty <3
+from . import __version__
+
+# importing the version number from the package
 
 app = typer.Typer(help="Security Toolkit")
 # app is like the main controller
@@ -24,7 +27,26 @@ def hello(name: str = typer.Argument("world")):
 # it takes one argument called name - if no name is provided it defaults to "world"
 
 
-def main():
+@app.command()
+def version(
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Show more detailed output."
+    ),
+):
+    """Show the current version of BlueTeam Sentinel."""
+    if verbose:
+        console.print("[yellow]Verbose mode is ON[/]")
+        console.print("[dim]Preparing version output…[/]")
+    console.print(f"[bold cyan]BlueTeam Sentinel v{__version__}[/]")
+
+
+def main(
+    verbose: bool = typer.Option(
+        False, "--verbose", "-v", help="Show more detailed output."
+    ),
+):
+    if verbose:
+        console.print("[yellow]Verbose mode is ON[/]")
     app()
 
 
