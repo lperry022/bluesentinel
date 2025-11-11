@@ -1,4 +1,5 @@
 import typer
+from .logger import log_error, log_info
 
 # importing a library for rich text formatting
 from rich.console import Console
@@ -20,7 +21,20 @@ console = Console()
 # tells the Typer that the following function is a command
 def hello(name: str = typer.Argument("world")):
     """Say hello (first command)."""
-    console.print(f"[bold green]Hello, {name}![/]")
+    try:
+        console.print(f"[bold green]Hello, {name}![/]")
+        log_info(f"Greeted {name}")
+    except Exception as e:
+        log_error(f"Failed to greet {name}: {e}")
+
+
+@app.command()
+def show_logs():
+    """Display recent log entries."""
+    with open("logs/cli.log", "r") as log_file:
+        console.print("[bold cyan]Recent Logs:[/]")
+        for line in log_file.readlines()[-5:]:
+            console.print(line.strip())
 
 
 # the command is called hello - i could call it harry if i really wanted to
