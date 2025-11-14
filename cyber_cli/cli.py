@@ -32,12 +32,18 @@ def hello(name: str = typer.Argument("world")):
 
 
 @app.command()
-def show_logs():
-    """Display recent log entries."""
-    with open("logs/cli.log", "r") as log_file:
-        console.print("[bold cyan]Recent Logs:[/]")
-        for line in log_file.readlines()[-5:]:
-            console.print(line.strip())
+def logs():
+    """
+    Display recent log entries.
+    Simply reads the last few lines of the log file.
+    """
+    console.print("[bold cyan]Recent Logs:[/]")
+    try:
+        with open("logs/cli.log", "r") as log_file:
+            for line in log_file.readlines()[-10:]:  # show last 10 lines
+                console.print(line.strip())
+    except FileNotFoundError:
+        console.print("[red]No logs found yet.[/]")
 
 
 # the command is called hello - i could call it harry if i really wanted to
