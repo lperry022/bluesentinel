@@ -1,5 +1,4 @@
 import typer
-from .logger import log_error, log_info
 
 # importing a library for rich text formatting
 from rich.console import Console
@@ -8,6 +7,10 @@ from rich.console import Console
 from . import __version__
 
 # importing the version number from the package
+from .logger import log_info, log_error
+
+# Import the network command group
+from .commands.network import network_app
 
 app = typer.Typer(help="Security Toolkit")
 # app is like the main controller
@@ -52,6 +55,11 @@ def version(
         console.print("[yellow]Verbose mode is ON[/]")
         console.print("[dim]Preparing version output…[/]")
     console.print(f"[bold cyan]BlueTeam Sentinel v{__version__}[/]")
+
+
+# Add the new "network" command group
+# This is what allows `python -m cyber_cli network info` to work
+app.add_typer(network_app, name="network")
 
 
 def main(

@@ -1,0 +1,2 @@
+hash_algo = "sha256"  
+password_length = 16 
